@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meet Nova | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>Meet Nova: a study planner, AI tutor and quiz app</h1>
+        <p>Our proposed solution. A free desktop app that helps students organize subjects, track deadlines, and practice with their own questions and their own notes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="note" style="margin-top:0">
+          <strong>Prototype status.</strong> Nova is a working Python desktop app for Windows, built as a student prototype. Version 1.5 is a full redesign with an AI tutor. The screenshots below come from the real app. It has been tested by its developer only, not yet with other students.
+        </div>
+        <div class="btn-row"><a class="btn btn-primary" href="download.html">Download Nova</a></div>
+        <h2 style="margin-top:36px">What Nova does</h2>
+        <ul class="point-list">
+          <li><strong>Nova AI tutor</strong>Chat with a tutor that answers first and explains second, adapts to your level, and shows steps for maths and code. Pick a style: Chat, Explain simply, Summarize or Step by step.</li>
+          <li><strong>Files and photos in</strong>Attach a PDF, PowerPoint, Word file, spreadsheet, text file or a photo, by button, drag and drop, or paste. Nova summarizes it into a short overview, key points and terms to know.</li>
+          <li><strong>Quizzes from your material</strong>Turn an attached file or photo into 5 to 15 multiple-choice questions with explanations. Answer them in the chat, or save them to a subject for later practice.</li>
+          <li><strong>Subjects and topics</strong>Organize what you study, and mark topics as not started, reviewed, or completed.</li>
+          <li><strong>Study planner</strong>Add tasks with due dates (picked from a calendar) and see what is upcoming, overdue, or done.</li>
+          <li><strong>Practice quizzes</strong>Answer multiple-choice questions, get a score, and review the correct answers.</li>
+          <li><strong>Progress and review suggestions</strong>If your correct answers on a topic fall below a threshold (70% to start, and you can change it), Nova suggests reviewing that topic and tells you why. The threshold is a starting point, not a measure of mastery.</li>
+          <li><strong>Dashboard and Simple Terms</strong>A summary built only from your saved data, and a searchable list of hard words (like instantiate or inheritance) explained in plain language. You can add your own terms.</li>
+        </ul>
+        <div class="note"><strong>About the AI.</strong> The AI parts need internet and a personal key that stays on your computer. AI can make mistakes, so check important facts with your teacher or textbook. In the free Gemini setup, text and files you send may be used by the provider to improve its products, so never send personal information or private schoolwork. Nova asks before the first message is sent.</div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>Design choices</h2>
+        <ul class="point-list">
+          <li><strong>Free, and mostly offline</strong>Subjects, planner, quizzes, progress and Simple Terms work without internet or an account, which helps students with limited connectivity. Only the AI tutor needs internet.</li>
+          <li><strong>Data stays on your device</strong>Everything is saved locally in a SQLite database, reducing privacy risk. The only things that leave your computer are the messages and files you choose to send to the AI.</li>
+          <li><strong>Simple, visible rules</strong>Review suggestions come from a plain scoring rule, not artificial intelligence, so you can see exactly why a topic was suggested.</li>
+          <li><strong>You stay in charge</strong>The tutor is told to coach on homework, admit when it is unsure, and point to where in your file an answer came from. Writing and answering your own questions still practices recall better than copying answers.</li>
+          <li><strong>Calm, readable design</strong>Liquid glass panels, light and dark themes, adjustable text size and zoom, a Reduce transparency switch, and a menu you can hide with the three-line button.</li>
+        </ul>
+
+        <h2 style="margin-top:40px">Screenshots</h2>
+        <div class="gallery wide">
+          <figure><img src="images/dashboard.jpg" alt="Nova dashboard with subject and task counts, upcoming deadlines and recent quiz results" loading="lazy"><figcaption>Dashboard: an overview built from your saved data.</figcaption></figure>
+          <figure><img src="images/ai-attach.jpg" alt="Nova AI chat with a picture and a Word file attached, and buttons to summarize, make a quiz or explain" loading="lazy"><figcaption>Nova AI: attach files or photos, then summarize, make a quiz or explain.</figcaption></figure>
+          <figure><img src="images/ai-quiz.jpg" alt="A generated practice quiz inside the chat showing a wrong answer and its explanation" loading="lazy"><figcaption>A quiz made from a file, with an explanation after each answer.</figcaption></figure>
+          <figure><img src="images/subjects.jpg" alt="Nova My Subjects screen listing topics with status labels" loading="lazy"><figcaption>My Subjects: topics with their study status.</figcaption></figure>
+          <figure><img src="images/planner.jpg" alt="Nova Study Planner with overdue and upcoming tasks" loading="lazy"><figcaption>Study Planner: overdue tasks are shown in red.</figcaption></figure>
+          <figure><img src="images/quiz.jpg" alt="A Nova practice quiz question with four answer choices" loading="lazy"><figcaption>Practice quiz: one question at a time, no answers shown early.</figcaption></figure>
+          <figure><img src="images/progress.jpg" alt="Nova My Progress screen with a topic suggested for review and the reason" loading="lazy"><figcaption>My Progress: each review suggestion explains why.</figcaption></figure>
+          <figure><img src="images/dark.jpg" alt="Nova dashboard in dark mode" loading="lazy"><figcaption>Dark mode, same glass design.</figcaption></figure>
+        </div>
+
+        <div class="note">
+          <strong>Limitations.</strong> Nova is a single-user app. It supports only multiple-choice questions, the AI needs internet and can be wrong, quizzes made from files depend on how readable the file is, and its benefits have not been tested with students.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>

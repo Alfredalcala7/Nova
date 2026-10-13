@@ -1,0 +1,9 @@
+# Nova 1.5 needs nothing but Python 3.10+ to run (the glass window uses Microsoft Edge or Google Chrome, which Windows
+# already has). These are optional extras:
+#
+#   pywebview   a true native window (instead of an Edge/Chrome app window)
+#   Pillow      lets you choose an account picture
+#   customtkinter   only for the old desktop version:  python classic_main.py
+pywebview>=5.0
+Pillow>=10.0
+customtkinter>=5.2.2

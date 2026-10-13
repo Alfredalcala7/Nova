@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova 2.0: accounts plan | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>Nova 2.0: how real accounts would work</h1>
+        <p>A plan, not a finished feature. Real accounts need a server, and protecting students' information is a responsibility.</p>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>Why the prototype is not real</h2>
+        <div class="prose">
+          <p>A web page running only in the browser cannot safely store or check passwords, because anyone using that computer can read or change what the browser saves. It also cannot send email, so it cannot deliver a real 6-digit code. Google and Apple sign-in can only be finished by a server. The <a href="account.html">account prototype</a> shows the screens and the flow, and it says so on the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>What a real system needs</h2>
+        <ul class="point-list" style="margin-top:20px">
+          <li><strong>A backend server</strong>A small web service (for example, Python with FastAPI) that checks passwords, issues sessions, and decides who may see what.</li>
+          <li><strong>A database</strong>Stores accounts and learning data. Passwords are saved only as hashes made with a trusted algorithm, never as readable text.</li>
+          <li><strong>An email service</strong>Sends the 6-digit codes and password reset messages. Reliable delivery usually needs a proper provider and a domain.</li>
+          <li><strong>Google sign-in</strong>Needs a Google Cloud project, a consent screen, and a callback address on our server. Setup is free but takes care.</li>
+          <li><strong>Apple sign-in</strong>Needs a paid Apple developer membership and extra configuration. Check the current price before deciding.</li>
+          <li><strong>Hosting with HTTPS</strong>Encrypts everything in transit. Free tiers exist for small projects, but their limits and terms change.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>How the 6-digit code and sign-in would be protected</h2>
+        <ul class="point-list" style="margin-top:20px">
+          <li><strong>Unpredictable codes</strong>Generated with a secure random generator, valid for about 10 minutes, usable once, and stored only as a hash.</li>
+          <li><strong>Limits on guessing</strong>A few wrong tries lock the code, and requests for new codes and login attempts are rate limited.</li>
+          <li><strong>Careful messages</strong>Errors say "email or password is incorrect" and never reveal whether an email has an account.</li>
+          <li><strong>Separate reset process</strong>Password reset uses its own expiring, single-use code, not the sign-up code.</li>
+          <li><strong>Server-side checks</strong>Every protected action is checked on the server, and each student can only see their own data.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>What information we would ask for, and why</h2>
+        <ul class="point-list" style="margin-top:20px">
+          <li><strong>Email and password (required)</strong>To log in and to send codes.</li>
+          <li><strong>Full name and role (required)</strong>To greet the user and to show the right profile questions for students, teachers, or other users.</li>
+          <li><strong>Education details (students and teachers only)</strong>Level, strand or course, and year for students; subjects and level for teachers. Used to tailor Nova, and never required of everyone.</li>
+          <li><strong>Gender (optional)</strong>Not needed for any Nova feature, so we would leave it optional with a "prefer not to say" choice, or leave it out.</li>
+          <li><strong>Age and birthday (not collected)</strong>Nova does not need them, and a birthday already reveals age. Collecting less data means less to protect.</li>
+        </ul>
+        <div class="note">
+          <strong>Before collecting real data.</strong> Philippine privacy law (the Data Privacy Act of 2012) may apply once real personal information is collected, and extra care is needed for students under 18. Ask your instructor or school first.
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>Suggested build order</h2>
+        <ol class="refs">
+          <li>Backend skeleton and database for accounts.</li>
+          <li>Sign-up and login with server-side password hashing.</li>
+          <li>Email 6-digit verification.</li>
+          <li>Password reset.</li>
+          <li>Profile setup.</li>
+          <li>Google sign-in, then Apple sign-in.</li>
+          <li>Connect the Nova desktop app to the same accounts.</li>
+        </ol>
+        <p class="lead" style="margin-top:20px"><strong>Status:</strong> not built. Only the screens exist, in the <a href="account.html">prototype</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>

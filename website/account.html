@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account (prototype) | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>Account pages (prototype)</h1>
+        <p>This shows how sign-up, login, the 6-digit code, password reset and profile setup would look and flow. It is not a real account system.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="note" style="margin:0 auto 24px">
+          <strong>Prototype only.</strong> Nothing is sent to a server, and data stays in this browser. The 6-digit code is shown on the page because this site cannot send email. Google and Apple sign-in are planned and not built. Use a made-up password and no real personal information. Read how real accounts would work on the <a href="accounts-plan.html">Nova 2.0 accounts plan</a>.
+        </div>
+
+        <div class="card glass">
+          <p class="msg" id="msg" role="alert" aria-live="polite" hidden></p>
+          <p class="inbox" id="inbox" hidden></p>
+
+          <div id="view-signup">
+            <h2>Create an account</h2>
+            <form id="form-signup" novalidate>
+              <label for="su-email">Email</label><input id="su-email" type="email" autocomplete="email" maxlength="120">
+              <label for="su-pass">Password</label><input id="su-pass" type="password" autocomplete="new-password" maxlength="100">
+              <p class="hint">At least 8 characters, with letters and numbers.</p>
+              <label for="su-pass2">Confirm password</label><input id="su-pass2" type="password" autocomplete="new-password" maxlength="100">
+              <button class="btn btn-primary" type="submit">Create account</button>
+            </form>
+            <div class="row"><button class="btn btn-outline" type="button" disabled>Continue with Google (planned)</button><button class="btn btn-outline" type="button" disabled>Continue with Apple (planned)</button></div>
+            <p class="row">Already have an account? <button class="linkish" type="button" data-go="login">Log in</button></p>
+          </div>
+
+          <div id="view-verify" hidden>
+            <h2>Enter your 6-digit code</h2>
+            <form id="form-verify" novalidate>
+              <label for="ver-code">Code</label><input id="ver-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+              <p class="hint">The code expires after 10 minutes, and 5 wrong tries are allowed.</p>
+              <button class="btn btn-primary" type="submit">Verify</button>
+              <button class="btn btn-outline" type="button" id="resend">Send a new code</button>
+            </form>
+          </div>
+
+          <div id="view-login" hidden>
+            <h2>Log in</h2>
+            <form id="form-login" novalidate>
+              <label for="li-email">Email</label><input id="li-email" type="email" autocomplete="email" maxlength="120">
+              <label for="li-pass">Password</label><input id="li-pass" type="password" autocomplete="current-password" maxlength="100">
+              <button class="btn btn-primary" type="submit">Log in</button>
+            </form>
+            <div class="row"><button class="btn btn-outline" type="button" disabled>Continue with Google (planned)</button><button class="btn btn-outline" type="button" disabled>Continue with Apple (planned)</button></div>
+            <p class="row"><button class="linkish" type="button" data-go="forgot">Forgot password?</button><button class="linkish" type="button" data-go="signup">Create an account</button></p>
+          </div>
+
+          <div id="view-forgot" hidden>
+            <h2>Reset your password</h2>
+            <form id="form-forgot" novalidate>
+              <label for="fg-email">Email</label><input id="fg-email" type="email" autocomplete="email" maxlength="120">
+              <button class="btn btn-primary" type="submit">Send reset code</button>
+            </form>
+            <p class="row"><button class="linkish" type="button" data-go="login">Back to log in</button></p>
+          </div>
+
+          <div id="view-reset" hidden>
+            <h2>Choose a new password</h2>
+            <form id="form-reset" novalidate>
+              <label for="rs-code">6-digit code</label><input id="rs-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+              <label for="rs-pass">New password</label><input id="rs-pass" type="password" autocomplete="new-password" maxlength="100">
+              <button class="btn btn-primary" type="submit">Change password</button>
+              <button class="btn btn-outline" type="button" id="resend-reset">Send a new code</button>
+            </form>
+          </div>
+
+          <div id="view-profile" hidden>
+            <h2>Tell us about yourself</h2>
+            <p class="hint">We only ask what Nova needs. We do not ask for your age or birthday.</p>
+            <form id="form-profile" novalidate>
+              <label for="pf-name">Full name</label><input id="pf-name" autocomplete="name" maxlength="80">
+              <label for="role">I am a</label>
+              <select id="role"><option value="">Choose one</option><option>Student</option><option>Teacher</option><option>Other user</option></select>
+              <div data-role="Student" hidden>
+                <label for="level">Education level</label>
+                <select id="level"><option value="">Choose one</option><option>Senior high school</option><option>College</option></select>
+                <div data-level="Senior high school" hidden>
+                  <label for="strand">Strand</label>
+                  <select id="strand"><option value="">Choose one</option><option>STEM</option><option>ABM</option><option>HUMSS</option><option>GAS</option><option>TVL</option><option>Other</option></select>
+                  <label for="grade">Grade level</label>
+                  <select id="grade"><option value="">Choose one</option><option>Grade 11</option><option>Grade 12</option></select>
+                </div>
+                <div data-level="College" hidden>
+                  <label for="course">Course or program</label><input id="course" placeholder="For example, BSIT" maxlength="80">
+                  <label for="year">Year level</label>
+                  <select id="year"><option value="">Choose one</option><option>1st year</option><option>2nd year</option><option>3rd year</option><option>4th year</option><option>5th year or higher</option></select>
+                  <label for="major">Major (only if you have one)</label><input id="major" maxlength="80">
+                </div>
+              </div>
+              <div data-role="Teacher" hidden>
+                <label for="subjects">Subjects you teach</label><input id="subjects" maxlength="120">
+                <label for="taught">Level you teach</label>
+                <select id="taught"><option value="">Choose one</option><option>Senior high school</option><option>College</option><option>Both</option></select>
+              </div>
+              <label for="gender">Gender (optional)</label>
+              <select id="gender"><option>Prefer not to say</option><option>Female</option><option>Male</option><option>Non-binary</option><option>Other</option></select>
+              <button class="btn btn-primary" type="submit">Save profile</button>
+            </form>
+          </div>
+
+          <div id="view-account" hidden>
+            <h2>Your account</h2>
+            <dl id="summary"></dl>
+            <div class="row">
+              <button class="btn btn-outline" type="button" id="edit-profile">Edit profile</button>
+              <button class="btn btn-outline" type="button" id="logout">Log out</button>
+              <button class="linkish" type="button" id="delete-account">Delete this prototype account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

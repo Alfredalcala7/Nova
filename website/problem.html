@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Problem | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>The problem: learning is hard to organize, and easy to fake</h1>
+        <p>Students have more tools than ever. Many still lack a simple way to plan, practice, and check what they actually know.</p>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container two-col slab glass">
+        <div>
+          <h2>The bigger picture</h2>
+          <p class="big-fact">273 million</p>
+          <p class="lead">children, adolescents, and youth were out of school worldwide in 2024, according to UN data for the 2026 SDG report.</p>
+          <p class="source"><a href="https://unstats.un.org/sdgs/report/2026/extended-report/Extended-Report-2026_Goal-4.pdf">Source: UN SDG Report 2026, Goal 4</a></p>
+        </div>
+        <div class="prose">
+          <p>SDG 4 asks the world for inclusive, equitable, quality education for everyone. That figure shows how far the world still is from that goal.</p>
+          <p>Technology is often offered as a shortcut, but UNESCO cautions that it is not an automatic fix. Its 2023 education report notes that one in four primary schools has no electricity, and that learning benefits fade when technology is overused or used without qualified teachers.</p>
+          <p class="source"><a href="https://www.unesco.at/en/education/education-2030/global-education-monitoring-gem-report/gem23">Source: UNESCO GEM Report 2023 summary</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>The problem we focus on</h2>
+        <div class="prose">
+          <p>Our campaign looks at a smaller, everyday problem inside that picture: students who do have devices and still struggle to study well.</p>
+          <p>Three things tend to go wrong. Deadlines and subjects are scattered across notes, chats, and memory. Students reread material without testing themselves, so they cannot tell what they really know. And when answers are one search or one AI prompt away, it becomes tempting to collect answers instead of learning them.</p>
+        </div>
+        <div class="note">
+          <strong>A note on evidence.</strong> These three issues are our framing of the problem, based on common student experience and the concerns raised in the UNESCO report. We are not claiming that Nova has been proven to improve grades.
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>Who is affected</h2>
+        <ul class="point-list" style="margin-top:20px">
+          <li><strong>College and senior high school students</strong>Juggling several subjects, deadlines, and exams at once.</li>
+          <li><strong>Students with limited access</strong>Those who share devices or have unreliable internet need tools that work offline and cost nothing.</li>
+          <li><strong>Teachers and families</strong>They guide how technology is used, and their role does not disappear when a tool is introduced.</li>
+        </ul>
+        <p class="lead" style="margin-top:20px">Next, see the full picture of what technology offers and risks: <a href="technology.html">Tech in Education</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>

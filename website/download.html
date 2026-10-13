@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Nova | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>Download Nova</h1>
+        <p>A free study planner, AI tutor and practice quiz app for Windows. Version 1.5 "Glass", October 2026.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card glass">
+          <h2>Nova for Windows, version 1.5</h2>
+          <p class="hint">Source package (runs with Python 3). Free, no account needed.</p>
+          <div class="btn-row"><a class="btn btn-primary" href="downloads/Nova-app-v1.5.zip" download>Download Nova-app-v1.5.zip</a>
+             <button class="btn" type="button" disabled>Windows installer (.exe): planned</button></div>
+          <p class="hint">The installer is not built yet. When it exists it will be unsigned, so Windows SmartScreen may show a warning that you can read before choosing to run it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>How to install and run</h2>
+        <ul class="point-list">
+          <li><strong>1. Unzip the file</strong>Right-click the downloaded zip and choose Extract All. You get a folder called Nova.</li>
+          <li><strong>2. Install Python 3</strong>Get it from python.org if you do not have it (3.10 or newer). Windows already includes the Microsoft Edge engine that Nova uses to show its glass window.</li>
+          <li><strong>3. Open PowerShell in the Nova folder</strong>In File Explorer, open the Nova folder, click the address bar, type <code>powershell</code>, and press Enter.</li>
+          <li><strong>4. Start Nova</strong>Run the line below. Nova 1.5 needs no extra packages to run.</li>
+        </ul>
+        <pre>py main.py</pre>
+        <p class="hint">Optional extras: <code>py -m pip install Pillow</code> lets you choose an account picture, and <code>py -m pip install pywebview</code> gives Nova a native window instead of an Edge app window. The older desktop version still works with <code>py classic_main.py</code> after <code>py -m pip install customtkinter</code>.</p>
+        <p class="hint"><strong>Turn on the AI tutor:</strong> open Settings, then AI connection, and paste a key. A free Gemini key from aistudio.google.com works. The key is saved only on your computer. Everything except the AI works without it.</p>
+        <p class="hint">Your data is saved on your own computer in <code>%APPDATA%\Nova</code>. To remove Nova completely, delete the Nova folder and that data folder.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+        <div>
+          <h2>What is inside</h2>
+          <ul class="point-list">
+            <li><strong>The app</strong>Dashboard, Nova AI, My Subjects, Study Planner, Practice Quizzes, My Progress, Simple Terms, Settings and Account.</li>
+            <li><strong>Documentation</strong>A README with setup, the database design, and known limitations.</li>
+            <li><strong>Tests</strong>Automated tests and a manual checklist, so you can check it yourself.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Before you download</h2>
+          <ul class="point-list">
+            <li><strong>No keys or passwords inside</strong>The package is checked for pasted API keys. The AI tutor needs your own key, which you add on your own computer.</li>
+            <li><strong>A student project</strong>It is unsigned and has been tested by its developer only. The code is plain Python, so you can read it first.</li>
+            <li><strong>Privacy</strong>Everything stays on your computer. Only the messages and files you choose to send to the AI leave it, and the app asks first.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container slab glass">
+        <h2>Release notes: version 1.5 "Glass"</h2>
+        <ul class="point-list">
+          <li><strong>New</strong>A complete liquid glass redesign, a hideable menu with a three-line button, a rebuilt AI chat that streams answers and keeps your history, files and photos you can summarize or turn into quizzes, quiz explanations, a date picker in the planner, light, dark and custom themes, and smoother scrolling on every screen.</li>
+          <li><strong>Known limitations</strong>One user only, multiple-choice questions only, and benefits not tested with other students. The AI needs internet and a personal key, it can make mistakes, and very large or scanned files may not be readable.</li>
+          <li><strong>Not included yet</strong>Windows installer, user accounts, and sign-in. See the <a href="accounts-plan.html">Nova 2.0 accounts plan</a>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>

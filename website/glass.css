@@ -1,0 +1,165 @@
+/* Nova Liquid Glass: one design system for the app and the website.
+   Your colors are kept: navy #1E3A5F, blue #4F8EF7, slate text, cool gray #F1F5F9. Change them in :root only. */
+:root {
+  --navy: #1E3A5F;
+  --blue: #4F8EF7;
+  --blue-dark: #2F6FDB;
+  --gray: #F1F5F9;
+  --accent: var(--blue);
+  --accent-2: var(--blue-dark);
+  --on-accent: #fff;
+  --green: #22A06B;
+  --red: #C0392B;
+  --amber: #B7791F;
+
+  --bg: #EAF0F8;
+  --ink: #16263D;
+  --text: #334155;
+  --muted: #5F6F86;
+  --line: rgba(30, 58, 95, .12);
+
+  --glass: rgba(255, 255, 255, .40);
+  --glass-2: rgba(255, 255, 255, .58);
+  --glass-edge: rgba(255, 255, 255, .78);
+  --glass-shade: rgba(30, 58, 95, .10);
+  --glass-shadow: 0 10px 34px rgba(30, 58, 95, .16), 0 2px 6px rgba(30, 58, 95, .06);
+  --blur: 26px;
+
+  --r-xl: 32px; --r-lg: 24px; --r-md: 18px; --r-sm: 12px;
+  --spring: cubic-bezier(.34, 1.45, .5, 1);
+  --ease: cubic-bezier(.22, .8, .24, 1);
+  --font: "SF Pro Display", "Segoe UI Variable Display", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #08111F;
+  --ink: #EAF1FB;
+  --text: #C5D2E4;
+  --muted: #92A3BC;
+  --line: rgba(255, 255, 255, .12);
+  --green: #3DBE8B; --red: #F07167; --amber: #E0B04A;
+  --glass: rgba(26, 42, 70, .46);
+  --glass-2: rgba(40, 62, 98, .55);
+  --glass-edge: rgba(255, 255, 255, .20);
+  --glass-shade: rgba(0, 0, 0, .22);
+  --glass-shadow: 0 14px 44px rgba(0, 0, 0, .45), 0 2px 8px rgba(0, 0, 0, .25);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 3px; border-radius: 10px; }
+::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
+
+/* ---------- The living backdrop that the glass refracts ---------- */
+.backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
+.backdrop i { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .75; will-change: transform; animation: drift 26s ease-in-out infinite alternate; }
+.backdrop i:nth-child(1) { width: 52vmax; height: 52vmax; left: -14vmax; top: -18vmax; background: var(--accent); opacity: .55; }
+.backdrop i:nth-child(2) { width: 44vmax; height: 44vmax; right: -12vmax; top: 6vmax; background: #8CC1FF; animation-duration: 32s; animation-delay: -8s; opacity: .55; }
+.backdrop i:nth-child(3) { width: 48vmax; height: 48vmax; left: 18vmax; bottom: -26vmax; background: var(--navy); animation-duration: 38s; animation-delay: -15s; opacity: .42; }
+.backdrop i:nth-child(4) { width: 26vmax; height: 26vmax; right: 14vmax; bottom: 4vmax; background: #A9B8FF; animation-duration: 29s; animation-delay: -4s; opacity: .45; }
+:root[data-theme="dark"] .backdrop i:nth-child(1) { opacity: .5; }
+:root[data-theme="dark"] .backdrop i:nth-child(2) { background: #2F6FDB; opacity: .45; }
+:root[data-theme="dark"] .backdrop i:nth-child(3) { background: #1E3A5F; opacity: .95; }
+:root[data-theme="dark"] .backdrop i:nth-child(4) { background: #3B82F6; opacity: .28; }
+@keyframes drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(7vmax, 5vmax, 0) scale(1.14); } }
+.backdrop::after { content: ""; position: absolute; inset: 0; opacity: .06; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+
+/* ---------- Glass ---------- */
+.glass {
+  position: relative;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(190%) brightness(1.04);
+  backdrop-filter: blur(var(--blur)) saturate(190%) brightness(1.04);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow),
+    inset 0 1.5px 1px rgba(255, 255, 255, .75),
+    inset 0 -1px 1px rgba(255, 255, 255, .18),
+    inset 0 0 28px rgba(255, 255, 255, .07);
+}
+:root[data-theme="dark"] .glass { box-shadow: var(--glass-shadow), inset 0 1.5px 1px rgba(255, 255, 255, .22), inset 0 -1px 1px rgba(255, 255, 255, .05), inset 0 0 28px rgba(255, 255, 255, .03); }
+/* a soft specular sheen, plus a light that follows the pointer (set by script) */
+.glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(420px circle at var(--mx, 20%) var(--my, 0%), rgba(255, 255, 255, .26), transparent 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, .5) 0%, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0) 74%, rgba(255, 255, 255, .22) 100%);
+  opacity: .55; mix-blend-mode: soft-light; transition: opacity .3s;
+}
+:root[data-theme="dark"] .glass::before { opacity: .38; mix-blend-mode: plus-lighter; }
+.glass > * { position: relative; z-index: 1; }
+.glass-2 { background: var(--glass-2); }
+.glass-sm { border-radius: var(--r-md); --blur: 18px; }
+
+/* Real refraction: Chromium can bend what is behind the glass. Script turns this on only where it is supported. */
+.has-lens .lens { -webkit-backdrop-filter: blur(8px) url(#nova-lens) saturate(180%); backdrop-filter: blur(8px) url(#nova-lens) saturate(180%); }
+
+/* People who prefer less transparency, or less motion, get a calmer version */
+.solid .glass, .solid .lens { -webkit-backdrop-filter: none; backdrop-filter: none; background: color-mix(in srgb, var(--bg) 82%, var(--accent) 6%); }
+.solid .backdrop i { animation: none; }
+.still .backdrop i { animation: none; }
+@media (prefers-reduced-motion: reduce) { .backdrop i { animation: none; } * { scroll-behavior: auto !important; } }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: color-mix(in srgb, var(--bg) 84%, var(--accent) 5%); }
+}
+@media (prefers-contrast: more) { .glass { background: var(--bg); } }
+
+/* ---------- Buttons ---------- */
+.btn {
+  --h: 44px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--h); padding: 0 20px;
+  font: inherit; font-weight: 600; font-size: .95rem; color: var(--ink); text-decoration: none; cursor: pointer; white-space: nowrap;
+  border-radius: 999px; border: 1px solid var(--glass-edge); background: var(--glass-2);
+  -webkit-backdrop-filter: blur(14px) saturate(180%); backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: 0 4px 14px rgba(30, 58, 95, .12), inset 0 1.5px 1px rgba(255, 255, 255, .7), inset 0 -1px 1px rgba(255, 255, 255, .15);
+  transition: transform .35s var(--spring), box-shadow .25s, background .25s, filter .2s;
+}
+.btn:hover { transform: translateY(-1px) scale(1.02); }
+.btn:active { transform: scale(.95); transition-duration: .1s; }
+.btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; }
+.btn-primary {
+  color: var(--on-accent); border-color: rgba(255, 255, 255, .45);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 82%, #fff) 0%, var(--accent) 48%, var(--accent-2) 100%);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 1.5px 1px rgba(255, 255, 255, .65), inset 0 -2px 4px rgba(0, 0, 0, .12);
+}
+.btn-primary:hover { filter: brightness(1.06); }
+.btn-ghost { background: transparent; box-shadow: none; border-color: var(--line); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.btn-danger { color: var(--red); }
+.btn-sm { --h: 36px; padding: 0 15px; font-size: .88rem; }
+.icon-btn { width: 44px; height: 44px; padding: 0; border-radius: 50%; flex: none; }
+.icon-btn.btn-sm { width: 36px; height: 36px; }
+.icon { width: 1.25em; height: 1.25em; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- Inputs ---------- */
+.field, .textarea, .select {
+  width: 100%; font: inherit; color: var(--ink); padding: 11px 16px; border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--glass-2) 80%, transparent); border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 2px 5px var(--glass-shade); outline: none; transition: box-shadow .2s, border-color .2s;
+}
+.field::placeholder, .textarea::placeholder { color: var(--muted); opacity: .85; }
+.field:focus, .textarea:focus, .select:focus { border-color: var(--accent); box-shadow: inset 0 2px 5px var(--glass-shade), 0 0 0 4px color-mix(in srgb, var(--accent) 24%, transparent); }
+.select { appearance: none; padding-right: 38px; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; }
+.select option { color: #16263D; background: #fff; }
+.textarea { resize: vertical; min-height: 84px; }
+
+/* ---------- Small parts ---------- */
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 999px; font-size: .8rem; font-weight: 600; color: var(--muted); background: color-mix(in srgb, var(--glass-2) 70%, transparent); border: 1px solid var(--glass-edge); }
+.chip.blue { color: var(--accent-2); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.chip.green { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
+.chip.red { color: var(--red); background: color-mix(in srgb, var(--red) 12%, transparent); }
+:root[data-theme="dark"] .chip.blue { color: #9CC2FF; }
+.bar { height: 8px; border-radius: 99px; background: var(--glass-shade); overflow: hidden; box-shadow: inset 0 1px 2px var(--glass-shade); }
+.bar > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #fff)); transition: width .8s var(--ease); }
+
+/* ---------- Scrolling: custom thin bars, no layout jumps, no scroll chaining ---------- */
+.scroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--ink) 28%, transparent) transparent; }
+.scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--ink) 26%, transparent); border-radius: 99px; border: 3px solid transparent; background-clip: content-box; }
+.scroll::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--ink) 42%, transparent); background-clip: content-box; }
+.scroll::-webkit-scrollbar-track { background: transparent; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

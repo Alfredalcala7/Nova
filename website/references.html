@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>References | Nova</title>
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z' fill='%234F8EF7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="nova-lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="4" result="n"/><feGaussianBlur in="n" stdDeviation="2" result="s"/><feDisplacementMap in="SourceGraphic" in2="s" scale="22" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+
+  <header class="site-header">
+    <nav class="nav glass lens" aria-label="Main">
+      <a class="brand" href="index.html"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l7 37 37 7-37 7-7 37-7-37-37-7 37-7z"/><circle cx="50" cy="50" r="9" fill="#fff"/></svg>Nova</a>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" type="button"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="problem.html">The Problem</a></li>
+        <li><a href="technology.html">Tech in Education</a></li>
+        <li><a href="sts.html">STS Connection</a></li>
+        <li><a href="nova.html">Meet Nova</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="account.html">Account</a></li>
+        <li><a class="cta" href="download.html">Download</a></li>
+      </ul>
+      <button class="theme-btn" type="button" aria-label="Switch light and dark"></button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <h1>References</h1>
+        <p>The sources behind the facts on this site. Links were accessed in October 2026.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <ol class="refs">
+          <li>United Nations. (2026). <em>The Sustainable Development Goals Report 2026: Goal 4 extended report.</em> United Nations Statistics Division.<br><a href="https://unstats.un.org/sdgs/report/2026/extended-report/Extended-Report-2026_Goal-4.pdf">https://unstats.un.org/sdgs/report/2026/extended-report/Extended-Report-2026_Goal-4.pdf</a></li>
+          <li>UNESCO Global Education Monitoring Report. (2023). <em>Global education monitoring report 2023: Technology in education: A tool on whose terms?</em> UNESCO.<br><a href="https://doi.org/10.54676/UZQV8501">https://doi.org/10.54676/UZQV8501</a></li>
+          <li>UNESCO Austria. (n.d.). <em>Global Education Monitoring Report 2023: Technology in education: A tool on whose terms?</em> (summary page).<br><a href="https://www.unesco.at/en/education/education-2030/global-education-monitoring-gem-report/gem23">https://www.unesco.at/en/education/education-2030/global-education-monitoring-gem-report/gem23</a></li>
+          <li>Roediger, H. L., &amp; Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. <em>Psychological Science, 17</em>(3), 249-255.<br><a href="https://doi.org/10.1111/j.1467-9280.2006.01693.x">https://doi.org/10.1111/j.1467-9280.2006.01693.x</a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container glass">STS 101 Midterm Project, IT for the SDGs. Nova supports SDG 4: Quality Education.</div></footer>
+  <script src="main.js"></script>
+</body>
+</html>
